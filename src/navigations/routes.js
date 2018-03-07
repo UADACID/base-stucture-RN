@@ -1,6 +1,22 @@
 import React , { Component } from 'react'
-import { View, Text, ActivityIndicator  } from 'react-native'
+import { View, Text, ActivityIndicator, Easing, Animated, Platform } from 'react-native'
 import { StackNavigator, TabNavigator, NavigationActions } from 'react-navigation'
+import { Icon, Button } from 'native-base'
+// import IconBadge from 'react-native-icon-badge';
+//tab home
+import Homes from '../containers/Homes'
+import Settings from '../containers/Settings'
+import Notifications from '../containers/Notifications'
+
+//root
+import Models from '../containers/Models'
+import Designs from '../containers/Designs'
+import Previews from '../containers/Previews'
+import Carts from '../containers/Carts'
+import Transactions from '../containers/Transactions'
+import Payments from '../containers/Payments'
+import PaymentDetails from '../containers/PaymentDetails'
+
 
 
 const Test = (props) => (
@@ -22,14 +38,6 @@ const Test = (props) => (
   </View>
 )
 
-const TestHome = (props) => (
-  <View>
-    <Text onPress={()=> {
-      props.navigation.navigate('Payment')
-    }}>Tes Home</Text>
-  </View>
-)
-
 /* @flow */
 class Splash extends Component {
 
@@ -42,7 +50,7 @@ class Splash extends Component {
         ],
       });
       this.props.navigation.dispatch(resetAction);
-    }, 2000);
+    }, 100);
   }
 
   render() {
@@ -68,20 +76,41 @@ const TabHistory = TabNavigator({
 })
 
 const TabHome = TabNavigator({
-  Tab1 : {
-    screen : TestHome,
+  HomeTab : {
+    screen : Homes,
     navigationOptions: ({ navigation }) => ({
-      title: `Fifilio`,
+      title: `Home`,
+      tabBarIcon: ({ tintColor }) => <Icon ios='ios-home' android="ios-home" style={{fontSize: 25, color: tintColor}}/>
     }),
   },
-  Tab2 : {
-    screen : Test,
+  NotificationTab: {
+    screen : Notifications,
+    navigationOptions: ({ navigation }) => ({
+      title: `Notifications`,
+      tabBarIcon: ({ tintColor }) => <Icon ios='ios-notifications' android="ios-notifications" style={{fontSize: 25, color: tintColor}}/>
+    }),
+  },
+  SettingTab: {
+    screen : Settings,
     navigationOptions: ({ navigation }) => ({
       title: `Settings`,
+      tabBarIcon: ({ tintColor }) => <Icon ios='ios-cog' android="ios-cog" style={{fontSize: 25, color: tintColor}}/>
     }),
-  }
+  },
 },{
-  tabBarPosition : 'bottom'
+  tabBarPosition : 'bottom',
+  swipeEnabled : false,
+  animationEnabled : false ,
+  tabBarOptions: {
+    showLabel: false,
+    showIcon: true,
+    indicatorStyle : {
+      backgroundColor : '#ffffff'
+    },
+    style: {
+      backgroundColor: '#446CB3',
+    },
+  }
 })
 
 
@@ -89,26 +118,123 @@ const RootNavigation = StackNavigator({
   Splash : {
     screen : Splash
   },
-  Login : {
+  Logins : {
     screen : Test
   },
-  Payment : {
-    screen : Test,
+  Models : {
+    screen : Models
+  },
+  Designs : {
+    screen : Designs
+  },
+  Previews : {
+    screen : Previews
+  },
+  Carts : {
+    screen : Carts
+  },
+  Transactions: {
+    screen : Transactions
+  },
+  Payments : {
+    screen : Payments,
     navigationOptions: ({ navigation }) => ({
-      title: `Payment`,
+      title: `Payments`,
+      gesturesEnabled: true
+    }),
+  },
+  PaymentDetails : {
+    screen : PaymentDetails,
+    navigationOptions: ({ navigation }) => ({
+      title: `PaymentDetails`,
+      gesturesEnabled: true
     }),
   },
   TabHome : {
-    screen : TabHome
+    screen : TabHome,
+    navigationOptions: ({ navigation }) => ({
+      title: `Fifilio`,
+      // headerRight:(<View style={{flexDirection: 'row',alignItems: 'center',justifyContent: 'center',}}>
+      //               <IconBadge
+      //                 MainElement={
+      //                   <View style={{
+      //                     width:50,
+      //                     height:50,
+      //                     margin:6,
+      //                     justifyContent:'center',
+      //                     alignItems:'center'
+      //                   }}>
+      //                     <TouchableOpacity style={{paddingRight:15}}><Icon name='ios-swap'/></TouchableOpacity>
+      //                   </View>
+      //                 }
+      //                 BadgeElement={
+      //                   <Text style={{color:'#FFFFFF'}}>2</Text>
+      //                 }
+      //                 IconBadgeStyle={
+      //                   {width:30,
+      //                   height:30,
+      //                   backgroundColor: 'red'}
+      //                 }
+      //                 Hidden={false}
+      //                 />
+      //             </View>),
+      headerRight:(
+        <View style={{flexDirection:'row'}}>
+          <Button
+            onPress={()=> navigation.dispatch({type:'Navigation/NAVIGATE', routeName:'TabHistory'})}
+            style={{height:55, backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-swap' style={{color:'#000'}}/></Button>
+          <Button
+            style={{height:55, backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-add' style={{color:'#000'}}/></Button>
+        </View>
+      ),
+      headerTitleStyle:{
+        fontWeight:'100'
+      }
+    }),
   },
   TabHistory : {
     screen : TabHistory,
     navigationOptions: ({ navigation }) => ({
       title: `Transaction History`,
+      headerLeft:(
+        <Button
+          onPress={()=> navigation.dispatch({type:'Navigation/BACK'})}
+          style={{height:55, backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}>
+          <Icon name='ios-arrow-back' style={{color:'#000'}}/>
+        </Button>),
     }),
   }
 },{
-  headerMode:'float'
+  headerMode:'float',
+  navigationOptions :  ({ navigation }) => ({
+    headerTitleStyle:{
+      fontWeight:'100'
+    },
+  })
+  // transitionConfig: () => ({
+  //     transitionSpec: {
+  //       duration: 300,
+  //       easing: Easing.out(Easing.poly(4)),
+  //       timing: Animated.timing,
+  //     },
+  //     screenInterpolator: sceneProps => {
+  //       const { layout, position, scene } = sceneProps;
+  //       const { index } = scene;
+  //
+  //       const width = layout.initWidth;
+  //       const translateX = position.interpolate({
+  //         inputRange: [index - 1, index, index + 1],
+  //         outputRange: [width, 0, 0],
+  //       });
+  //
+  //       const opacity = position.interpolate({
+  //         inputRange: [index - 1, index - 0.99, index],
+  //         outputRange: [0, 1, 1],
+  //       });
+  //
+  //       return { opacity, transform: [{ translateX }] };
+  //     },
+  //   }),
 })
 
 export default RootNavigation
