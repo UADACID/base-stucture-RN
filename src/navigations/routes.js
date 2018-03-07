@@ -42,15 +42,23 @@ const Test = (props) => (
 
 
 const TabHistory = TabNavigator({
-  TabH1 : {
+  Pending : {
     screen : Test
   },
-  TabH2 : {
+  Completed : {
     screen : Test
   }
 },{
   tabBarPosition : 'top',
-  backBehavior : 'none'
+  backBehavior : 'none',
+  tabBarOptions: {
+    indicatorStyle : {
+      backgroundColor : '#ffffff'
+    },
+    style: {
+      backgroundColor: '#2d3436',
+    },
+  }
 })
 
 const TabHome = TabNavigator({
