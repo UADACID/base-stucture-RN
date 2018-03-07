@@ -72,7 +72,8 @@ const TabHistory = TabNavigator({
     screen : Test
   }
 },{
-  tabBarPosition : 'top'
+  tabBarPosition : 'top',
+  backBehavior : 'none'
 })
 
 const TabHome = TabNavigator({
@@ -105,7 +106,7 @@ const TabHome = TabNavigator({
     showLabel: false,
     showIcon: true,
     indicatorStyle : {
-      backgroundColor : '#ffffff'
+      backgroundColor : '#446CB3'
     },
     style: {
       backgroundColor: '#446CB3',
@@ -116,7 +117,10 @@ const TabHome = TabNavigator({
 
 const RootNavigation = StackNavigator({
   Splash : {
-    screen : Splash
+    screen : Splash,
+    navigationOptions: ({ navigation }) => ({
+      header: null,
+    }),
   },
   Logins : {
     screen : Test
