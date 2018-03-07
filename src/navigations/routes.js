@@ -9,6 +9,7 @@ import Settings from '../containers/Settings'
 import Notifications from '../containers/Notifications'
 
 //root
+import Splash from '../containers/Splash'
 import Models from '../containers/Models'
 import Designs from '../containers/Designs'
 import Previews from '../containers/Previews'
@@ -16,6 +17,7 @@ import Carts from '../containers/Carts'
 import Transactions from '../containers/Transactions'
 import Payments from '../containers/Payments'
 import PaymentDetails from '../containers/PaymentDetails'
+import Logins from '../containers/Logins'
 
 
 
@@ -37,31 +39,6 @@ const Test = (props) => (
     }}>Tes</Text>
   </View>
 )
-
-/* @flow */
-class Splash extends Component {
-
-  componentDidMount(){
-    setTimeout(()=>{
-      const resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [
-          NavigationActions.navigate({ routeName: 'TabHome' }),
-        ],
-      });
-      this.props.navigation.dispatch(resetAction);
-    }, 100);
-  }
-
-  render() {
-    return (
-      <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-        <ActivityIndicator />
-        <Text> waiting for redirect . . . </Text>
-      </View>
-    );
-  }
-}
 
 
 const TabHistory = TabNavigator({
@@ -123,7 +100,7 @@ const RootNavigation = StackNavigator({
     }),
   },
   Logins : {
-    screen : Test
+    screen : Logins
   },
   Models : {
     screen : Models

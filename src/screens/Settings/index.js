@@ -11,7 +11,7 @@ export default class Settings extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>I'm the Settings component</Text>
+        <Text onPress={()=> this.props.navigation.dispatch({type:'Navigation/NAVIGATE', routeName:'Logins'})}>I'm the Settings component</Text>
       </View>
     );
   }
