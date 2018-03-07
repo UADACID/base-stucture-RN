@@ -34,7 +34,7 @@ const TestHome = (props) => (
 class Splash extends Component {
 
   componentDidMount(){
-    // setTimeout(()=>{
+    setTimeout(()=>{
       const resetAction = NavigationActions.reset({
         index: 0,
         actions: [
@@ -42,7 +42,7 @@ class Splash extends Component {
         ],
       });
       this.props.navigation.dispatch(resetAction);
-    // }, 3000);
+    }, 2000);
   }
 
   render() {

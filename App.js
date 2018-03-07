@@ -6,15 +6,22 @@
 
 import React, { Component } from 'react';
 import {
-  View
+  View,
+  YellowBox
 } from 'react-native';
 import { Provider } from 'react-redux';
 import RootNavigation from './src/navigations/root'
 import store from './src/store'
 
+YellowBox.ignoreWarnings([
+  'Warning: componentWillMount is deprecated',
+  'Warning: componentWillUpdate is deprecated',
+  'Warning: componentWillReceiveProps is deprecated',
+]);
+
 export default class App extends Component<Props> {
   componentDidMount(){
-    console.log(store.getState);
+    console.log(store.getState());
   }
   render() {
     return (
