@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import {
   View,
   YellowBox,
+  NetInfo,
   BackHandler
 } from 'react-native';
 import { Provider } from 'react-redux';
@@ -25,10 +26,23 @@ export default class App extends Component<Props> {
 
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
+    NetInfo.isConnected.addEventListener('change', this.handleConnectionChange);
+    NetInfo.isConnected.fetch().done(
+      (isConnected) => {
+        const { dispatch } = store;
+        dispatch({type:'IS_CONNECTED', payload:isConnected})
+      }
+    );
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
+      NetInfo.isConnected.removeEventListener('change', this.handleConnectionChange);
+      BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
+  }
+
+  handleConnectionChange = (isConnected) => {
+          const { dispatch } = store;
+          dispatch({type:'IS_CONNECTED', payload:isConnected})
   }
 
   onBackPress = () => {

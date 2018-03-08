@@ -1,8 +1,11 @@
 import React , { Component } from 'react'
-import { View, Text, ActivityIndicator, Easing, Animated, Platform } from 'react-native'
+import { View, Text, ActivityIndicator, Easing, Animated, Platform, TouchableNativeFeedback } from 'react-native'
 import { StackNavigator, TabNavigator, NavigationActions } from 'react-navigation'
 import { Icon, Button } from 'native-base'
 // import IconBadge from 'react-native-icon-badge';
+
+//components
+import CustomTitle from '../components/customTitle'
 //tab home
 import Homes from '../containers/Homes'
 import Settings from '../containers/Settings'
@@ -142,7 +145,7 @@ const RootNavigation = StackNavigator({
   TabHome : {
     screen : TabHome,
     navigationOptions: ({ navigation }) => ({
-      title: `Fifilio`,
+      headerTitle: <CustomTitle title='Fifilio'/>,
       // headerRight:(<View style={{flexDirection: 'row',alignItems: 'center',justifyContent: 'center',}}>
       //               <IconBadge
       //                 MainElement={
@@ -169,11 +172,16 @@ const RootNavigation = StackNavigator({
       //             </View>),
       headerRight:(
         <View style={{flexDirection:'row'}}>
-          <Button
-            onPress={()=> navigation.dispatch({type:'Navigation/NAVIGATE', routeName:'TabHistory'})}
-            style={{height:55, backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-swap' style={{color:'#000'}}/></Button>
-          <Button
-            style={{height:55, backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-add' style={{color:'#000'}}/></Button>
+          <TouchableNativeFeedback onPress={()=> navigation.dispatch({type:'Navigation/NAVIGATE', routeName:'TabHistory'})}>
+            <View
+              style={{height:55, height:55, width:40, justifyContent:'center', alignItems:'center', backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-swap' style={{color:'#000'}}/>
+            </View>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback>
+            <View
+              style={{height:55, height:55, width:40, justifyContent:'center', alignItems:'center', backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-add' style={{color:'#000'}}/>
+            </View>
+          </TouchableNativeFeedback>
         </View>
       ),
       headerTitleStyle:{
@@ -195,6 +203,7 @@ const RootNavigation = StackNavigator({
   }
 },{
   headerMode:'float',
+  initialRouteName:'Splash',
   navigationOptions :  ({ navigation }) => ({
     headerTitleStyle:{
       fontWeight:'100'

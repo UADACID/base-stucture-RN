@@ -11,13 +11,6 @@ import RootNavigation from './routes'
 
 const AppNavigator = RootNavigation
 
-const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Splash'));
-
-const navReducer = (state = initialState, action) => {
-  const nextState = AppNavigator.router.getStateForAction(action, state);
-  // Simply return the original `state` if `nextState` is null or undefined.
-  return nextState || state;
-};
 
 // Note: createReactNavigationReduxMiddleware must be run before createReduxBoundAddListener
 export const NavigationMiddleware = createReactNavigationReduxMiddleware(
@@ -38,8 +31,10 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  nav: state.nav
-});
+const mapStateToProps = (state) => {
+  return {
+    nav: state.nav,
+  }
+};
 
 export default AppWithNavigationState = connect(mapStateToProps)(App);

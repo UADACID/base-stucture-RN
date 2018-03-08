@@ -29,7 +29,7 @@ export default class PaymentDetails extends Component {
         NavigationActions.navigate({ routeName: 'TabHome' }),
         NavigationActions.navigate({
           routeName: 'TabHistory' ,
-          action: NavigationActions.navigate({ routeName: 'TabH2' }),
+          action: NavigationActions.navigate({ routeName: 'Completed' }),
         }),
       ],
     });

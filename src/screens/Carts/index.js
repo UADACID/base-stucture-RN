@@ -6,19 +6,22 @@ import {
   Text,
   Platform,
   StyleSheet,
+  TouchableNativeFeedback
 } from 'react-native';
 import { Icon, Button } from 'native-base'
+import { NavigationActions } from 'react-navigation'
 
 export default class Carts extends Component {
 
   static navigationOptions = ({ navigation }) => ({
     title: `Carts`,
     headerLeft:(
-      <Button
-        onPress={()=> navigation.dispatch({type:'Navigation/BACK'})}
-        style={{height:55, backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}>
+      <TouchableNativeFeedback onPress={()=> navigation.dispatch({type:'Navigation/BACK'})}>
+      <View
+        style={{height:55, width:40, justifyContent:'center', alignItems:'center', backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}>
         <Icon name='ios-arrow-back' style={{color:'#000'}}/>
-      </Button>)
+      </View>
+      </TouchableNativeFeedback>)
   })
 
   render() {
