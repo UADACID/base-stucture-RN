@@ -172,7 +172,7 @@ const RootNavigation = StackNavigator({
       //             </View>),
       headerRight:(
         <View style={{flexDirection:'row'}}>
-          <TouchableNativeFeedback onPress={()=> navigation.dispatch({type:'Navigation/NAVIGATE', routeName:'TabHistory'})}>
+          <TouchableNativeFeedback onPress={()=> navigation.navigate('TabHistory')}>
             <View
               style={{height:55, height:55, width:40, justifyContent:'center', alignItems:'center', backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-swap' style={{color:'#000'}}/>
             </View>
