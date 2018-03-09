@@ -80,14 +80,14 @@ export default class PaymentDetails extends Component {
 
 const CustomItem = (props) => {
   return (
-    <View style={{flex:1, borderBottomWidth:0.5, borderColor:'#b6b6b6'}}>
+    <View style={{flex:1, borderBottomWidth:0.5, borderColor:'#fff'}}>
       <View style={{padding:10}}>
-        <Text>
+        <Text style={{color:'#fff'}}>
           {props.title}
         </Text>
       </View>
       <View style={{paddingRight:10, paddingBottom:10, alignItems:'flex-end'}}>
-        <Text note>
+        <Text note style={{color:'#fff'}}>
           {props.desc}
         </Text>
       </View>
@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
     paddingTop:0,
     paddingBottom:0,
     paddingRight:0,
+    backgroundColor: '#0073b2'
   }
 });
 

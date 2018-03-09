@@ -59,7 +59,7 @@ const TabHistory = TabNavigator({
       backgroundColor : '#ffffff'
     },
     style: {
-      backgroundColor: '#2d3436',
+      backgroundColor: '#0073b2',
     },
   }
 })
