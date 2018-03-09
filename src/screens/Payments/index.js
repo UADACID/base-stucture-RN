@@ -3,12 +3,12 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
+  Image,
   Platform,
   StyleSheet,
 } from 'react-native';
-import { Icon, Button } from 'native-base'
 import { NavigationActions } from 'react-navigation'
+import {Content, List, ListItem, Text, Left, Icon, Body, Right, Button } from 'native-base';
 
 export default class Payments extends Component {
 
@@ -22,7 +22,8 @@ export default class Payments extends Component {
       </Button>)
   })
 
-  onCheckoutPress = () => {
+  onCheckoutPress = ({payment_type, bankName, storeName}) => {
+    const params = {payment_type, bankName, storeName}
     const resetAction = NavigationActions.reset({
       index: 2,
       actions: [
@@ -31,7 +32,7 @@ export default class Payments extends Component {
           routeName: 'TabHistory' ,
           action: NavigationActions.navigate({ routeName: 'TabH2' }),
         }),
-        NavigationActions.navigate({ routeName: 'PaymentDetails' }),
+        NavigationActions.navigate({ routeName: 'PaymentDetails',params }),
       ],
     });
     this.props.navigation.dispatch(resetAction);
@@ -40,7 +41,35 @@ export default class Payments extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text  onPress={this.onCheckoutPress}>I'm the Payments component</Text>
+        <Content>
+          <List>
+            <ListItem itemDivider>
+              <Text>ATM / Virtual Account</Text>
+            </ListItem>
+            <ListItem icon onPress={()=>this.onCheckoutPress({payment_type: 'echannel', bankName:'mandiri'})}>
+              <Left>
+                <Image style={{width:40, height:40}} resizeMode='contain' source={require('../../../assets/payment/logo-bank-mandiri.png')} />
+              </Left>
+              <Body>
+                <Text>Mandiri Bill Payment</Text>
+              </Body>
+              <Right>
+                <Icon name="ios-arrow-forward-outline" style={{color:'#0073b2'}} />
+              </Right>
+            </ListItem>
+            <ListItem icon onPress={()=>this.onCheckoutPress({payment_type: 'bank_transfer', bankName:'bca'})}>
+              <Left>
+                <Image style={{width:40, height:40}} resizeMode='contain' source={require('../../../assets/payment/logo-bank-bca.png')} />
+              </Left>
+              <Body>
+                <Text>BCA Bank Transfer</Text>
+              </Body>
+              <Right>
+                <Icon name="ios-arrow-forward-outline" style={{color:'#0073b2'}} />
+              </Right>
+            </ListItem>
+          </List>
+        </Content>
       </View>
     );
   }
@@ -49,6 +78,6 @@ export default class Payments extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#9b59b6'
+    backgroundColor: '#ffffff'
   },
 });
