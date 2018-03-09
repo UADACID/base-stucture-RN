@@ -13,6 +13,7 @@ import { Spinner } from 'native-base'
 
 class ModalOverlay extends Component {
   render() {
+    // const customFlex = this.props.modalOverlay ? 1 : 0
     return (
       <Modal
           animationType="fade"
@@ -21,7 +22,7 @@ class ModalOverlay extends Component {
           onRequestClose={() => {
             alert('Modal has been closed.');
           }}>
-          <View style={styles.container}>
+          <View style={[styles.container,{flex:this.props.customFlex}]}>
               <Spinner color='#fff'/>
               <Text style={{color:'#fff'}} onPress={()=>this.props.dispatch({type:'HIDE_OVERLAY'})}>Please wait...</Text>
           </View>
@@ -31,14 +32,14 @@ class ModalOverlay extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  modalOverlay : state.modalOverlay
+  modalOverlay : state.modalOverlay,
+  customFlex : state.modalOverlay ? 1 : 0
 })
 
 export default connect(mapStateToProps)(ModalOverlay)
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#0203048f'
