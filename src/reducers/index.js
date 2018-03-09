@@ -12,6 +12,8 @@ import {
   modelVariants, refItemDragable
 } from './Designs'
 
+import { paymentsReducer } from './Payments'
+
 
 const appReducer = combineReducers({
   nav: navReducer,
@@ -21,6 +23,9 @@ const appReducer = combineReducers({
   showTextModal, showTextModalEdit,
   multipleImageDragable, productModels,
   modelVariants, refItemDragable,
+
+//payment
+  paymentsReducer
 });
 
 export default appReducer
