@@ -13,6 +13,8 @@ import {
 } from 'react-native';
 import { Provider } from 'react-redux';
 import { NavigationActions } from 'react-navigation'
+
+import ModalOverlay from './src/components/ModalOverlay'
 import RootNavigation from './src/navigations/root'
 import store from './src/store'
 
@@ -56,12 +58,14 @@ export default class App extends Component<Props> {
   };
 
   render() {
+    const {modalOverlay} = store.getState()
     return (
-      <View style={{flex:1}}>
         <Provider store={store}>
-          <RootNavigation />
+          <View style={{flex:1}}>
+            <RootNavigation />
+            <ModalOverlay/>
+          </View>
         </Provider>
-      </View>
     );
   }
 }

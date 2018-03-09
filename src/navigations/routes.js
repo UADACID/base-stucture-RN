@@ -111,7 +111,7 @@ const RootNavigation = StackNavigator({
     }),
   },
   Logins : {
-    screen : Logins
+    screen : Logins,
   },
   Models : {
     screen : Models
@@ -177,7 +177,7 @@ const RootNavigation = StackNavigator({
               style={{height:55, height:55, width:40, justifyContent:'center', alignItems:'center', backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-swap' style={{color:'#000'}}/>
             </View>
           </TouchableNativeFeedback>
-          <TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={()=> navigation.dispatch({type:'SHOW_OVERLAY'})}>
             <View
               style={{height:55, height:55, width:40, justifyContent:'center', alignItems:'center', backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-add' style={{color:'#000'}}/>
             </View>

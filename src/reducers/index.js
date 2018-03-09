@@ -13,6 +13,7 @@ import {
 } from './Designs'
 
 import { paymentsReducer } from './Payments'
+import { modalOverlay } from './ModalOverlay'
 
 
 const appReducer = combineReducers({
@@ -25,7 +26,9 @@ const appReducer = combineReducers({
   modelVariants, refItemDragable,
 
 //payment
-  paymentsReducer
+  paymentsReducer,
+//overlay
+  modalOverlay
 });
 
 export default appReducer
