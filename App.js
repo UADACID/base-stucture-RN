@@ -26,7 +26,7 @@ export default class App extends Component<Props> {
 
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
-    NetInfo.isConnected.addEventListener('change', this.handleConnectionChange);
+    NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange);
     NetInfo.isConnected.fetch().done(
       (isConnected) => {
         const { dispatch } = store;
