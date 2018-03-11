@@ -33,11 +33,15 @@ const WIDTH_MODELS = width / 3.5
 
 class CustomListDesign extends Component {
 
+  onPressModel = () => {
+    this.props.dispatch({type:'Navigation/NAVIGATE', routeName:'Designs'})
+  }
+
   _keyExtractor = (item, index) => index;
 
   renderItem = ({item}) => {
     return (
-      <TouchableOpacity activeOpacity={0.8} onPress={()=>console.log('Designs')}>
+      <TouchableOpacity activeOpacity={0.8} onPress={()=>this.onPressModel()}>
         <Card>
           <CardItem style={styles.cardContainer}>
             <FastImage
