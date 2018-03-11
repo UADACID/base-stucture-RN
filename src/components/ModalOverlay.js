@@ -20,7 +20,7 @@ class ModalOverlay extends Component {
           transparent={true}
           visible={this.props.modalOverlay}
           onRequestClose={() => {
-            alert('Modal has been closed.');
+            this.props.dispatch({type:'HIDE_OVERLAY'})
           }}>
           <View style={[styles.container,{flex:this.props.customFlex}]}>
               <Spinner color='#fff'/>

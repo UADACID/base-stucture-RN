@@ -1,5 +1,5 @@
 import React , { Component } from 'react'
-import { View, Text, ActivityIndicator, Easing, Animated, Platform, TouchableNativeFeedback } from 'react-native'
+import { View, Text, ActivityIndicator, Easing, Animated, Platform, TouchableNativeFeedback, Dimensions } from 'react-native'
 import { StackNavigator, TabNavigator, NavigationActions } from 'react-navigation'
 import { Icon, Button } from 'native-base'
 // import IconBadge from 'react-native-icon-badge';
@@ -22,7 +22,7 @@ import Payments from '../containers/Payments'
 import PaymentDetails from '../containers/PaymentDetails'
 import Logins from '../containers/Logins'
 
-
+const { width, height } = Dimensions.get('window')
 
 const Test = (props) => (
   <View>
@@ -98,6 +98,7 @@ const TabHome = TabNavigator({
     },
     style: {
       backgroundColor: '#446CB3',
+      paddingRight: 100
     },
   }
 })
@@ -172,16 +173,29 @@ const RootNavigation = StackNavigator({
       //             </View>),
       headerRight:(
         <View style={{flexDirection:'row'}}>
-          <TouchableNativeFeedback onPress={()=> navigation.navigate('TabHistory')}>
+          <TouchableNativeFeedback onPress={()=> {
+            // navigation.navigate('TabHistory')
+            const resetAction = NavigationActions.reset({
+              index: 1,
+              actions: [
+                NavigationActions.navigate({ routeName: 'TabHome' }),
+                NavigationActions.navigate({
+                  routeName: 'TabHistory' ,
+                  action: NavigationActions.navigate({ routeName: 'Pending' }),
+                }),
+              ],
+            });
+            navigation.dispatch(resetAction);
+          }}>
             <View
-              style={{height:55, height:55, width:40, justifyContent:'center', alignItems:'center', backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-swap' style={{color:'#000'}}/>
+              style={{height:55, height:55, paddingRight:10, width:40, justifyContent:'center', alignItems:'center', backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-swap' style={{color:'#000'}}/>
             </View>
           </TouchableNativeFeedback>
-          <TouchableNativeFeedback onPress={()=> navigation.dispatch({type:'SHOW_OVERLAY'})}>
+          {/*<TouchableNativeFeedback onPress={()=> navigation.dispatch({type:'SHOW_OVERLAY'})}>
             <View
               style={{height:55, height:55, width:40, justifyContent:'center', alignItems:'center', backgroundColor:Platform.OS == 'ios' ? '#ffffff00' : '#fff'}}><Icon name='md-add' style={{color:'#000'}}/>
             </View>
-          </TouchableNativeFeedback>
+          </TouchableNativeFeedback>*/}
         </View>
       ),
       headerTitleStyle:{

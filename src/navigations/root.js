@@ -4,9 +4,9 @@ import {
   createReduxBoundAddListener,
   createReactNavigationReduxMiddleware,
 } from 'react-navigation-redux-helpers';
-
 import { connect } from 'react-redux';
-
+import { View } from 'react-native'
+import CustomCircleButton from '../components/CustomCircleButton'
 import RootNavigation from './routes'
 
 const AppNavigator = RootNavigation
@@ -22,11 +22,15 @@ const addListener = createReduxBoundAddListener("root");
 class App extends React.Component {
   render() {
     return (
-      <AppNavigator navigation={addNavigationHelpers({
-        dispatch: this.props.dispatch,
-        state: this.props.nav,
-        addListener,
-      })} />
+      <View style={{flex:1}}>
+        <AppNavigator navigation={addNavigationHelpers({
+          dispatch: this.props.dispatch,
+          state: this.props.nav,
+          addListener,
+        })} />
+        {this.props.nav.index == 0 ?
+        <CustomCircleButton /> : false}
+      </View>
     );
   }
 }

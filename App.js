@@ -7,11 +7,13 @@
 import React, { Component } from 'react';
 import {
   View,
+  Text,
   YellowBox,
   NetInfo,
-  BackHandler
+  BackHandler,
 } from 'react-native';
 import { Provider } from 'react-redux';
+import { Icon } from 'native-base'
 import { NavigationActions } from 'react-navigation'
 
 import ModalOverlay from './src/components/ModalOverlay'
@@ -58,7 +60,10 @@ export default class App extends Component<Props> {
   };
 
   render() {
-    const {modalOverlay} = store.getState()
+    const {modalOverlay, nav} = store.getState()
+    console.log(nav);
+    const filterNavigationForTabHome = nav.routes.length
+    console.log(filterNavigationForTabHome);
     return (
         <Provider store={store}>
           <View style={{flex:1}}>

@@ -12,7 +12,7 @@ import { NavigationActions } from 'react-navigation'
 export default class Splash extends Component {
 
   componentDidMount(){
-    setTimeout(()=>{
+    // setTimeout(()=>{
       const resetAction = NavigationActions.reset({
         index: 0,
         actions: [
@@ -20,7 +20,7 @@ export default class Splash extends Component {
         ],
       });
       this.props.navigation.dispatch(resetAction);
-    }, 100);
+    // }, 100);
   }
 
   render() {
