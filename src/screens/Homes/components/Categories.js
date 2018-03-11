@@ -29,7 +29,7 @@ class Categories extends Component {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={()=>alert('aaa')}>
+        onPress={this.handlePressCategory}>
         <Image
           style={{width:width/4, height:width/4}}
           source={item.uri}/>
