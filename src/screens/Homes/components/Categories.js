@@ -19,7 +19,7 @@ const { width, height } = Dimensions.get('window')
 class Categories extends Component {
 
   handlePressCategory = (id) => {
-    this.props.hideModal()
+    this.props.hideCategoryOverlay()
     this.props.toScreen({routeName:'Models', passProps:{categoryId:id}})
   }
 
@@ -57,7 +57,7 @@ class Categories extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    hideModal: () => {dispatch({type:'HIDE_MODAL'})},
+    hideCategoryOverlay: () => {dispatch({type:'HIDE_CATEGORY_OVERLAY'})},
     toScreen: ({routeName, passProps})=>{
       dispatch(NavigationActions.navigate({ routeName: routeName }))
     }
