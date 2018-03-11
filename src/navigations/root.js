@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux';
 import { View } from 'react-native'
 import CustomCircleButton from '../components/CustomCircleButton'
+import CategoryOverlay from '../components/CategoryOverlay'
 import RootNavigation from './routes'
 
 const AppNavigator = RootNavigation
@@ -30,6 +31,7 @@ class App extends React.Component {
         })} />
         {this.props.nav.index == 0 ?
         <CustomCircleButton /> : false}
+        <CategoryOverlay />
       </View>
     );
   }
