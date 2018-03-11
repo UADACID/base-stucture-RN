@@ -8,7 +8,10 @@ import {
   StyleSheet,
   TouchableNativeFeedback
 } from 'react-native';
-import { Icon, Button } from 'native-base'
+import { Icon, Button, Content } from 'native-base'
+
+import CustomListDesign from './components/CustomListDesign'
+import CustomListPromote from './components/CustomListPromote'
 
 export default class Models extends Component {
 
@@ -26,7 +29,11 @@ export default class Models extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text onPress={()=> this.props.navigation.navigate('Designs')}>I'm the Models component</Text>
+        <Content>
+          {/*<Text onPress={()=> this.props.navigation.navigate('Designs')}>I'm the Models component</Text>*/}
+          <CustomListDesign title='Create Your Own Design'/>
+          <CustomListPromote title='Models Are Promoted'/>
+        </Content>
       </View>
     );
   }
@@ -35,6 +42,6 @@ export default class Models extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1abc9c'
+    backgroundColor: '#ffffff'
   },
 });
