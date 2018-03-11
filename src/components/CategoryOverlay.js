@@ -12,6 +12,7 @@ import {
 import { connect } from 'react-redux'
 import Categories from '../screens/Homes/components/Categories'
 import CustomCircleButton from './CustomCircleButton'
+import CustomAnimatedForCategory from './CustomAnimatedForCategory'
 
 const CategoryOverlay = (props) => (
   <Modal
@@ -23,15 +24,19 @@ const CategoryOverlay = (props) => (
     }}>
     <TouchableNativeFeedback onPress={()=> props.dispatch({type:'HIDE_CATEGORY_OVERLAY'})}>
       <View style={[styles.container]}>
-        <View style={styles.containerBody}>
-          <Categories />
-        </View>
-        <View style={styles.containerFooter}>
-          <Image
-            style={{height:40, width:40, transform:[{rotateY:'180deg'}]}}
-            resizeMode='contain'
-            source={require('../../assets/cone.png')}/>
-        </View>
+
+          <View style={styles.containerBody}>
+            <CustomAnimatedForCategory>
+              <Categories />
+            </CustomAnimatedForCategory>
+          </View>
+          <View style={styles.containerFooter}>
+            <Image
+              style={{height:40, width:40, transform:[{rotateY:'180deg'}]}}
+              resizeMode='contain'
+              source={require('../../assets/cone.png')}/>
+          </View>
+
         <CustomCircleButton from='modal'/>
       </View>
     </TouchableNativeFeedback>
