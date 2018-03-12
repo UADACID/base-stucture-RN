@@ -18,7 +18,7 @@ import StartupInfo from '../../components/StartupInfo'
 export default class Homes extends Component {
 
   componentDidMount(){
-    this.showInfo()
+    // this.showInfo()
   }
 
   showInfo = () => {

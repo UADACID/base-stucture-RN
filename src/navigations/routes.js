@@ -21,6 +21,7 @@ import Transactions from '../containers/Transactions'
 import Payments from '../containers/Payments'
 import PaymentDetails from '../containers/PaymentDetails'
 import Logins from '../containers/Logins'
+import Registers from '../containers/Registers'
 
 const { width, height } = Dimensions.get('window')
 
@@ -113,6 +114,9 @@ const RootNavigation = StackNavigator({
   },
   Logins : {
     screen : Logins,
+  },
+  Registers : {
+    screen : Registers
   },
   Models : {
     screen : Models
