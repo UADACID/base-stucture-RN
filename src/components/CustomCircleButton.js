@@ -31,8 +31,14 @@ class CustomCircleButton extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  showCategoryOverlay : ()=> dispatch({type:'SHOW_CATEGORY_OVERLAY'}),
-  hideCategoryOverlay : ()=> dispatch({type:'HIDE_CATEGORY_OVERLAY'})
+  showCategoryOverlay : ()=> {
+    dispatch({type:'SHOW_CATEGORY_OVERLAY'})
+    dispatch({type:'HIDE_STARTUP_INFO_OVERLAY'})
+  },
+  hideCategoryOverlay : ()=> {
+    dispatch({type:'HIDE_CATEGORY_OVERLAY'})
+    dispatch({type:'HIDE_STARTUP_INFO_OVERLAY'})
+  }
 })
 
 export default connect(null, mapDispatchToProps)(CustomCircleButton)

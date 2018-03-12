@@ -15,6 +15,7 @@ import {
 import { paymentsReducer } from './Payments'
 import { modalOverlay } from './ModalOverlay'
 import { categoryOverlay } from './CategoryOverlay'
+import { startupInfo } from './StartupInfo'
 
 
 const appReducer = combineReducers({
@@ -30,7 +31,8 @@ const appReducer = combineReducers({
   paymentsReducer,
 //overlay
   modalOverlay,
-  categoryOverlay
+  categoryOverlay,
+  startupInfo
 });
 
 export default appReducer
