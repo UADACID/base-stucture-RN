@@ -183,6 +183,9 @@ const multipleTextDragable = ( state = initialState, action ) => {
       return initialState
     }
     break
+    case 'SET_DEFAULT_MULTIPLE_TEXT_DRAGABLE':{
+      return initialState
+    }
     default:
       return state
   }

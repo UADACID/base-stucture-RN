@@ -6,6 +6,10 @@ const activeTabBottom = (state = initialState, action) => {
         return action.payload
       }
       break;
+    case 'SET_DEFAULT_TAB_BOTTOM_SELECTED': {
+        return initialState
+      }
+      break;
     default:
       return state
   }

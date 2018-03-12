@@ -41,8 +41,8 @@ export default class Designs extends Component {
   }
 
   onPreviewPress = () => {
-    this.props.navigation.navigate('Previews')
-  return;
+  //   this.props.navigation.navigate('Previews')
+  // return;
   const { modelVariants } = this.props
   const { activeId, variants } = modelVariants
 

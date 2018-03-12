@@ -17,6 +17,8 @@ import { modalOverlay } from './ModalOverlay'
 import { categoryOverlay } from './CategoryOverlay'
 import { startupInfo } from './StartupInfo'
 
+import { orderReducer } from './Carts'
+
 
 const appReducer = combineReducers({
   nav: navReducer,
@@ -32,7 +34,9 @@ const appReducer = combineReducers({
 //overlay
   modalOverlay,
   categoryOverlay,
-  startupInfo
+  startupInfo,
+
+  orderReducer
 });
 
 export default appReducer

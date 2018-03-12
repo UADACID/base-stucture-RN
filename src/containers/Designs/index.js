@@ -13,7 +13,7 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     toScreen: ({routeName, params})=>{
       // console.log({routeName, params});
-      // dispatch(NavigationActions.navigate({ routeName: routeName, params}))
+      dispatch(NavigationActions.navigate({ routeName: routeName, params}))
     },
     clearBorder : () => {
       dispatch({type:'CLEAR_ALL_ACTIVE_TEXT'})
@@ -23,8 +23,8 @@ const mapDispatchToProps = ( dispatch ) => {
     hideOverlay: () => dispatch({type:"HIDE_OVERLAY"}),
     //FOR DEV ONLY
     clearAllMultipleObj : () => {
-      // dispatch({type:'CLEAR_MULTIPLE_TEXT'})
-      // dispatch({type:'CLEAR_ALL_IMAGE'})
+      dispatch({type:'CLEAR_MULTIPLE_TEXT'})
+      dispatch({type:'CLEAR_ALL_IMAGE'})
     }
   }
 }

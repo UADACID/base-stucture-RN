@@ -8,8 +8,13 @@ import {
   StyleSheet,
   TouchableNativeFeedback
 } from 'react-native';
-import { Icon, Button } from 'native-base'
+import { Icon, Button, Footer } from 'native-base'
 import { NavigationActions } from 'react-navigation'
+
+import CartList from './components/CartList'
+import CheckoutButton from './components/CheckoutButton'
+import { AppColor, width, height } from '../../utils'
+import CustomNavbar from '../../components/CustomNavbar'
 
 export default class Carts extends Component {
 
@@ -27,7 +32,11 @@ export default class Carts extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text  onPress={()=> this.props.navigation.navigate('Transactions')}>I'm the Carts component</Text>
+        {/*<Text  onPress={()=> this.props.navigation.navigate('Transactions')}>I'm the Carts component</Text>*/}
+        <CartList />
+        <Footer style={styles.footer}>
+          <CheckoutButton/>
+        </Footer>
       </View>
     );
   }
@@ -36,6 +45,9 @@ export default class Carts extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e74c3c'
+    backgroundColor: '#fff'
   },
+  footer: {
+    height: 50,
+  }
 });

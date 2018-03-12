@@ -5,6 +5,9 @@ const activeSubTabButtom = (state=initialState, action) => {
     case 'CHANGE_SUB_TAB_BOTTOM_SELECTED':
       return action.payload
       break;
+    case 'SET_DEFAULT_SUB_TAB_BOTTOM_SELECTED':
+      return initialState
+      break;
     default:
       return state
   }

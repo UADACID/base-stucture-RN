@@ -124,6 +124,9 @@ const modelVariants = (state = initialState, action ) => {
         ...state,
         activeId: filterActiveId.id
       }
+    case "SET_DEFAULT_SELECTED_MODEL_VARIANT_COLOR":
+      return initialState
+      break;
     default:
       return state
   }

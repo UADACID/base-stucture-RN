@@ -105,6 +105,10 @@ const multipleImageDragable = ( state = initialState, action ) => {
       return newState
     }
     break
+    case 'SET_DEFAULT_MULTIPLE_IMAGE_DRAGABLE':{
+      return initialState
+    }
+    break
     default:
       return state
   }

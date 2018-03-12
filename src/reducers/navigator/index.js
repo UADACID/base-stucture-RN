@@ -3,7 +3,7 @@ import AppNavigator from '../../navigations/routes'
 import { getCurrentRouteName, getActionRouteName } from '../../utils'
 
 
-const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Previews'));
+const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Designs'));
 
 export const navReducer = (state = initialState, action) => {
   const nextState = AppNavigator.router.getStateForAction(action, state);

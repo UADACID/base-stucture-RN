@@ -40,6 +40,9 @@ const textMenu = (state = initialState, action) => {
     case "ON_CHANGE_CLEAR_FONT":
       return initialState
       break;
+    case 'SET_DEFAULT_TEXT_MENU':
+      return initialState
+      break;
     default:
       return state
   }

@@ -31,6 +31,9 @@ const productModels = ( state = initialState, action ) => {
         selectedId:action.payload
       }
       break;
+    case "SET_DEFAULT_SELECTED_MODEL":
+      return initialState
+      break;
     default:
       return state
   }

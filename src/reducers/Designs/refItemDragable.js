@@ -7,6 +7,9 @@ const refItemDragable = ( state = initialState, action ) => {
       let uniqArray = [ ...new Set(newArray) ]
       return uniqArray
       break;
+    case 'SET_DEFAULT_CHANGE_REFS':
+      return initialState
+      break;
     default:
       return state
   }
