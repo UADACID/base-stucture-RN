@@ -18,15 +18,15 @@ import StartupInfo from '../../components/StartupInfo'
 export default class Homes extends Component {
 
   componentDidMount(){
-    // this.showInfo()
+    this.showInfo()
   }
 
   showInfo = () => {
-    const info = true
+    const info = this.props.showInfoStartup
     if (info) {
       setTimeout(()=> {
         this.props.showStartupInfo()
-      }, 1000);
+      }, 500);
     }
   }
 

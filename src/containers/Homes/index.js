@@ -5,4 +5,10 @@ const mapDispatchToProps = dispatch => ({
   showStartupInfo : () => dispatch({type:'SHOW_STARTUP_INFO_OVERLAY'})
 })
 
-export default connect(null, mapDispatchToProps)(Homes)
+const mapStateToProps = state => {
+  return {
+    showInfoStartup: state.configReducers
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homes)

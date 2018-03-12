@@ -18,11 +18,13 @@ import { categoryOverlay } from './CategoryOverlay'
 import { startupInfo } from './StartupInfo'
 
 import { orderReducer } from './Carts'
+import { configReducers } from './Configs'
 
 
 const appReducer = combineReducers({
   nav: navReducer,
   isConnected: connectivity,
+  configReducers,
   activeTabBottom, activeSubTabButtom,
   textMenu, multipleTextDragable,
   showTextModal, showTextModalEdit,
