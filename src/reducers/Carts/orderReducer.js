@@ -60,7 +60,22 @@ const orderReducer = ( state = initialState, action ) => {
           }
           return obj
         })
-        return newState}
+
+        const lastState = newState.map(obj => {
+          if (obj.index == orderIndex) {
+            let priceSizeS = obj.valueOfSizeS * obj.price
+            let priceSizeM = obj.valueOfSizeM * obj.price
+            let priceSizeL = obj.valueOfSizeL * obj.price
+            let priceSizeXL = obj.valueOfSizeXL * obj.price
+            let priceSizeXXL = obj.valueOfSizeXXL * obj.price
+
+            obj.totalPrice = priceSizeS + priceSizeM + priceSizeL + priceSizeXL + priceSizeXXL
+
+          }
+          return obj
+        })
+        return lastState
+      }
       break;
     default:
       return state

@@ -40,7 +40,8 @@ export default class Previews extends Component {
       valueOfSizeL:0,
       valueOfSizeXL:0,
       valueOfSizeXXL:0,
-      price:additionalTotalCost
+      price:additionalTotalCost,
+      totalPrice:0
     }
 
     this.props.addToCart(payload)

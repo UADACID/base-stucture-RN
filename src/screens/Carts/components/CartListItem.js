@@ -55,7 +55,7 @@ class CartListItem extends Component {
           <View style={{width:width-105, flexDirection:'row'}}>
             <View>
               <Text style={{padding:10}}>{this.props.title}</Text>
-              <Text note style={{padding:10}}>Rp {this.props.price}</Text>
+              <Text note style={{padding:10}}>@ Rp {this.props.price} - {this.props.totalPrice}</Text>
             </View>
             <TouchableOpacity
               onPress={()=>this.onRemovePress(this.props.index)}
