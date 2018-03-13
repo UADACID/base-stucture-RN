@@ -25,7 +25,7 @@ export default class Homes extends Component {
     const info = this.props.showInfoStartup
     if (info) {
       setTimeout(()=> {
-        this.props.showStartupInfo()
+        // this.props.showStartupInfo()
       }, 500);
     }
   }

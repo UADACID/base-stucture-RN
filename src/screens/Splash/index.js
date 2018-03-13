@@ -18,7 +18,7 @@ export default class Splash extends Component {
         actions: [
           NavigationActions.navigate({
             routeName: 'TabHome' ,
-            action : NavigationActions.navigate({ routeName:'NotificationTab' })
+            // action : NavigationActions.navigate({ routeName:'NotificationTab' })
           }),
         ],
       });

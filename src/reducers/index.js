@@ -19,6 +19,8 @@ import { startupInfo } from './StartupInfo'
 
 import { orderReducer } from './Carts'
 import { configReducers } from './Configs'
+import { shipping } from './Shipping'
+import { userReducer } from './Users'
 
 
 const appReducer = combineReducers({
@@ -38,7 +40,9 @@ const appReducer = combineReducers({
   categoryOverlay,
   startupInfo,
 
-  orderReducer
+  orderReducer,
+  shipping,
+  userReducer
 });
 
 export default appReducer

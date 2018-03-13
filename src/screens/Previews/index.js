@@ -129,7 +129,7 @@ export default class Previews extends Component {
         </Content>
         <Footer style={{backgroundColor:'#ffffff'}}>
         <Button style={styles.button} onPress={()=>this.onPressAddToCart(additionalTotalCost)}>
-          <Text style={{fontWeight:'100', fontSize:20}}>
+          <Text style={{fontWeight:'100', fontSize:20, color:'#fff'}}>
             ADD TO CART
           </Text>
         </Button>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     bottom:0,
-    backgroundColor: '#dae9ef'
+    backgroundColor: '#0073b2'
   },
   size : {
     backgroundColor:'#f7355d',

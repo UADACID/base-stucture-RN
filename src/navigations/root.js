@@ -29,7 +29,7 @@ class App extends React.Component {
           state: this.props.nav,
           addListener,
         })} />
-        {this.props.nav.index == 0 ?
+        {this.props.nav.index == 0 && this.props.nav.routes.length == 1 ?
         <CustomCircleButton /> : false}
         <CategoryOverlay />
       </View>
