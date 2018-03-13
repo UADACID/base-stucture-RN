@@ -15,7 +15,7 @@ class DefaultAddress extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.addressHeader}>
-          <Text style={[{fontWeight:'bold', fontSize:17},styles.textDistance]}>Alamat Utama</Text>
+          <Text style={[{fontWeight:'bold', fontSize:17},styles.textDistance]}>{label}</Text>
           <Text style={styles.textDistance}>{asName}</Text>
           <Text style={styles.textDistance}>{detailAddress}</Text>
           <Text style={[styles.textDistance,{marginTop:7, marginBottom:7}]}>{phoneNumber}</Text>

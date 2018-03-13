@@ -11,5 +11,7 @@ export const shippingAction = ({dispatch, config, type}) => {
     catch((err)=>{
       dispatch({type:'HIDE_OVERLAY'})
       console.log(err);
+      console.log(JSON.parse(JSON.stringify(err)));
+      console.log(err.response);
     })
 }

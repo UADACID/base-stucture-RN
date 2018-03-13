@@ -20,7 +20,7 @@ const { width, height } = Dimensions.get('window')
 export default class Transactions extends Component {
 
   static navigationOptions = ({ navigation }) => ({
-    title: `Transactions - Shipping`,
+    title: `Shipping`,
     headerLeft:(
       <Button
         onPress={()=> navigation.dispatch({type:'Navigation/BACK'})}
@@ -45,7 +45,7 @@ export default class Transactions extends Component {
               <DefaultAddress />
             </ListItem>
             <ListItem
-              onPress={()=> alert('alamat lain')}
+              onPress={()=> this.props.navigation.navigate('ListAddress')}
               style={{marginLeft:0, padding: 20, backgroundColor:'#fff'}}>
               <Body>
                 <Text>Kirim ke alamat lain</Text>

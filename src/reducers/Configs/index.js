@@ -1,5 +1,6 @@
 const initialState = {
-  showInfoStartup : true
+  showInfoStartup : true,
+  cityIdOfProduction : '152'
 }
 
 export const configReducers = ( state = initialState, action ) => {
