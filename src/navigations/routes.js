@@ -91,6 +91,7 @@ const TabHome = TabNavigator({
 },{
   tabBarPosition : 'bottom',
   swipeEnabled : false,
+  // initialRouteName :'NotificationTab'
   animationEnabled : false ,
   tabBarOptions: {
     showLabel: false,
@@ -99,7 +100,7 @@ const TabHome = TabNavigator({
       backgroundColor : '#446CB3'
     },
     style: {
-      backgroundColor: '#446CB3',
+      backgroundColor: '#0073b2',
       paddingRight: 100
     },
   }

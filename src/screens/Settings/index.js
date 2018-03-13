@@ -17,7 +17,24 @@ export default class Settings extends Component {
     return (
       <Container>
         <Content>
-          <List>
+          <List style={{backgroundColor:'#ffffff'}}>
+            <ListItem
+              icon onPress={()=>this.props.navigation.dispatch({type:'Navigation/NAVIGATE', routeName:'Logins'})}>
+              <Body>
+                <Text>Profile</Text>
+              </Body>
+              <Right>
+                <Icon name='ios-contact'/>
+              </Right>
+            </ListItem>
+            <ListItem icon onPress={()=>this.props.navigation.dispatch({type:'Navigation/NAVIGATE', routeName:'Logins'})}>
+              <Body>
+                <Text>Login</Text>
+              </Body>
+              <Right>
+                <Icon name='ios-arrow-forward'/>
+              </Right>
+            </ListItem>
             <ListItem icon>
               <Body>
                 <Text>Show Info On Startup</Text>
@@ -38,5 +55,6 @@ export default class Settings extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#ffffff'
   },
 });

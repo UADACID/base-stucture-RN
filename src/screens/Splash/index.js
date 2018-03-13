@@ -16,7 +16,10 @@ export default class Splash extends Component {
       const resetAction = NavigationActions.reset({
         index: 0,
         actions: [
-          NavigationActions.navigate({ routeName: 'TabHome' }),
+          NavigationActions.navigate({
+            routeName: 'TabHome' ,
+            action : NavigationActions.navigate({ routeName:'NotificationTab' })
+          }),
         ],
       });
       this.props.navigation.dispatch(resetAction);
