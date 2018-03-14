@@ -36,6 +36,8 @@ class Courier extends Component {
   }
 
   onSelectedCourer = (name) => {
+    // console.log('-----city name -----');
+    // console.log(this.props.city_id);
     const config = {
       method:'post',
       url:`https://api.rajaongkir.com/starter/cost`,
@@ -82,10 +84,9 @@ class Courier extends Component {
 
 const mapStateToProps = state => {
 
-  const { userReducer } = state
-  const { address } = userReducer
-  const filterDefaultAddress = address.filter(obj => obj.isSelected == true)
-  const defaultAddress = filterDefaultAddress[0].city.city_id
+  const { addressReducer } = state
+  const filterDefaultAddress = addressReducer.filter(obj => obj.is_selected == true)
+  const defaultAddress = filterDefaultAddress[0].city_id
   return {
     shipping : state.shipping,
     city_id : defaultAddress

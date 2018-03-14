@@ -25,7 +25,7 @@ export default class ListAddress extends Component {
 
   render() {
 
-    const { address } = this.props.userReducer
+    const { address } = this.props
     return (
       <View style={styles.container}>
         <Content>
@@ -34,9 +34,9 @@ export default class ListAddress extends Component {
               <ListItem key={i} style={{marginLeft:0}} onPress={()=>this.props.onChangeDefaultAddress(i)}>
                 <View style={styles.addressHeader}>
                   <Text style={[{fontWeight:'bold', fontSize:17},styles.textDistance]}>{obj.label}</Text>
-                  <Text style={styles.textDistance}>{obj.asName}</Text>
-                  <Text style={styles.textDistance}>{obj.detailAddress}</Text>
-                  <Text style={[styles.textDistance,{marginTop:7, marginBottom:7}]}>{obj.phoneNumber}</Text>
+                  <Text style={styles.textDistance}>{obj.as_name}</Text>
+                  <Text style={styles.textDistance}>{obj.detail_address}</Text>
+                  <Text style={[styles.textDistance,{marginTop:7, marginBottom:7}]}>{obj.phone_number}</Text>
                 </View>
               </ListItem>
             )

@@ -32,6 +32,22 @@ export const addressReducer = (state = initialState, action ) => {
     case "GET_ADDRESS":
 
       break;
+    case "ON_CHANGE_DEFAULT_ADDRESS":{
+      const index = action.payload
+      const setIndexToDefault = state.map((obj, i) => {
+        if (i == index) {
+          obj.is_selected = true
+        }else{
+          obj.is_selected = false
+        }
+
+        return obj
+      })
+      console.log(setIndexToDefault);
+
+      return setIndexToDefault
+    }
+    break
     default:
       return state
   }

@@ -3,7 +3,7 @@ import ListAddress from '../../screens/ListAddress'
 
 const mapStateToProps = state => {
   return {
-    userReducer : state.userReducer
+    address : state.addressReducer
   }
 }
 

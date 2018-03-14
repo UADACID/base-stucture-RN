@@ -1,4 +1,5 @@
 const initialState = {
+  user_id : '1',
   email : 'pratamasetya99@gmail.com',
   password : '2wsx1qaz',
   address : [
@@ -41,37 +42,37 @@ export const userReducer = ( state = initialState, action ) => {
         ...userData
       }
       break;
-    case 'ON_CHANGE_DEFAULT_ADDRESS':{
-        const index = action.payload
-        const {address} = state
-
-        const setIndexToDefault = address.map((obj, i) => {
-
-          if (i == index) {
-            obj.isSelected = true
-          }else{
-            obj.isSelected = false
-          }
-
-          return obj
-        })
-
-        return {
-          ...state,
-          address : setIndexToDefault
-        }
-      }
-      break;
-    case 'ADD_ADDRESS_USER_':
-      const newAddress = action.payload
-
-      const oldAddress = state.address
-      const address = oldAddress.concat([newAddress])
-      return {
-        ...state,
-        address
-      }
-      break;
+    // case 'ON_CHANGE_DEFAULT_ADDRESS':{
+    //     const index = action.payload
+    //     const {address} = state
+    //
+    //     const setIndexToDefault = address.map((obj, i) => {
+    //
+    //       if (i == index) {
+    //         obj.isSelected = true
+    //       }else{
+    //         obj.isSelected = false
+    //       }
+    //
+    //       return obj
+    //     })
+    //
+    //     return {
+    //       ...state,
+    //       address : setIndexToDefault
+    //     }
+    //   }
+    //   break;
+    // case 'ADD_ADDRESS_USER_':
+    //   const newAddress = action.payload
+    //
+    //   const oldAddress = state.address
+    //   const address = oldAddress.concat([newAddress])
+    //   return {
+    //     ...state,
+    //     address
+    //   }
+    //   break;
     default:
       return state
   }
