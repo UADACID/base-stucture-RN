@@ -29,11 +29,13 @@ export default class Transactions extends Component {
       </Button>)
   })
 
+  onPressPayment = () => {
+    this.props.navigation.navigate('Payments')
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        {/*<Text onPress={()=> this.props.navigation.navigate('Payments')}>I'm the Transactions component</Text>*/}
-        {/*<Address />*/}
         <Content>
           <List>
             <ListItem style={{marginLeft:0}}>
@@ -76,7 +78,7 @@ export default class Transactions extends Component {
             <ListItem style={{marginLeft:0}}>
               <TouchableOpacity
                 style={styles.button}
-                onPress={()=> this.props.navigation.navigate('Payments')}>
+                onPress={this.onPressPayment}>
                 <Text style={{fontWeight:'100', fontSize:20, color:'#fff'}}>PAYMENT</Text>
               </TouchableOpacity>
             </ListItem>

@@ -11,14 +11,15 @@ import { connect } from 'react-redux'
 class DefaultAddress extends Component {
 
   render() {
-    const { isSelected, label, asName, province, city, detailAddress, phoneNumber } = this.props.selectedAddress
+    const { is_selected, label, as_name, province, city, detail_address, phone_number } = this.props.selectedAddress
+
     return (
       <View style={styles.container}>
         <View style={styles.addressHeader}>
           <Text style={[{fontWeight:'bold', fontSize:17},styles.textDistance]}>{label}</Text>
-          <Text style={styles.textDistance}>{asName}</Text>
-          <Text style={styles.textDistance}>{detailAddress}</Text>
-          <Text style={[styles.textDistance,{marginTop:7, marginBottom:7}]}>{phoneNumber}</Text>
+          <Text style={styles.textDistance}>{as_name}</Text>
+          <Text style={styles.textDistance}>{detail_address}</Text>
+          <Text style={[styles.textDistance,{marginTop:7, marginBottom:7}]}>{phone_number}</Text>
         </View>
       </View>
     );
@@ -26,8 +27,8 @@ class DefaultAddress extends Component {
 }
 
 const mapStateToProps = state => {
-  const userData = state.userReducer
-  const filterBySelectedAddress = userData.address.filter(obj => obj.isSelected == true)
+  const address = state.addressReducer
+  const filterBySelectedAddress = address.filter(obj => obj.is_selected == true)
   const selectedAddress = filterBySelectedAddress[0]
   return {
     selectedAddress

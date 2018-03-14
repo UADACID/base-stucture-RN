@@ -21,6 +21,9 @@ import { orderReducer } from './Carts'
 import { configReducers } from './Configs'
 import { shipping } from './Shipping'
 import { userReducer } from './Users'
+import { addressReducer } from './Address'
+
+import { categoriesReducer } from './Categories'
 
 
 const appReducer = combineReducers({
@@ -42,7 +45,11 @@ const appReducer = combineReducers({
 
   orderReducer,
   shipping,
-  userReducer
+  userReducer,
+  addressReducer,
+
+  //screen
+  categoriesReducer
 });
 
 export default appReducer

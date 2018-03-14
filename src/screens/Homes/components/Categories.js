@@ -23,7 +23,7 @@ class Categories extends Component {
     this.props.toScreen({routeName:'Models', passProps:{categoryId:id}})
   }
 
-  _keyExtractor = (item, index) => index;
+  _keyExtractor = (item, index) => item.id;
 
   renderItem = ({item}) => {
     return (
@@ -32,18 +32,19 @@ class Categories extends Component {
         onPress={this.handlePressCategory}>
         <Image
           style={{width:width/4, height:width/4}}
-          source={item.uri}/>
+          source={{uri:item.image_url}}/>
       </TouchableOpacity>
     )
   }
 
   render() {
     const { categories } = this.props
+    console.log(categories.length);
     return (
       <View style={styles.container}>
         <Text style={{padding:this.props.title? 10 : 0, paddingLeft:this.props.title ? 20 : 0}}>{this.props.title}</Text>
         <FlatList
-          data={icons}
+          data={categories}
           horizontal={false}
           numColumns={4}
           keyExtractor={this._keyExtractor}
@@ -66,7 +67,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    categories : state.categories
+    categories : state.categoriesReducer
   }
 }
 
