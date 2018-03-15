@@ -42,7 +42,7 @@ const Test = (props) => (
         ],
       });
       props.navigation.dispatch(resetAction);
-    }}>Tes</Text>
+    }}>Menunggu Rilis</Text>
   </View>
 )
 

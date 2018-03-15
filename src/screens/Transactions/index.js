@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
+  Alert,
   Platform,
   Dimensions,
   TouchableOpacity,
@@ -30,7 +31,14 @@ export default class Transactions extends Component {
   })
 
   onPressPayment = () => {
-    this.props.navigation.navigate('Payments')
+    const { serviceSelected, addNewTransactionData, shippingService, transactionDataToPayment } = this.props
+    if (serviceSelected == undefined || serviceSelected == null) {
+      return Alert.alert('','Mohon pilih kurir dan service yang diinginkan')
+    }
+    // alert('boleh')
+    // console.log({shippingService,transactionDataToPayment});
+    addNewTransactionData({shippingService,transactionDataToPayment})
+    // this.props.navigation.navigate('Payments')
   }
 
   render() {
@@ -72,7 +80,7 @@ export default class Transactions extends Component {
             <ListItem style={{marginLeft:0, backgroundColor:'#fff'}}>
               <View style={{flexDirection:'row', justifyContent:'space-around', flex:1}}>
                 <Text style={{fontSize:25}}>Total</Text>
-                <Text style={{fontSize:25, color:'green'}}>Rp. {this.props.sumary}</Text>
+                <Text style={{fontSize:25, color:'green'}}>Rp. {this.props.summary}</Text>
               </View>
             </ListItem>
             <ListItem style={{marginLeft:0}}>

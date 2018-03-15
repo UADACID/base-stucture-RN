@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { ToastAndroid } from 'react-native';
+import { NavigationActions } from 'react-navigation'
 
 export default createPaymentTransaction = (data, dispatch) => {
+    console.log(data);
     axios({
       method: 'post',
       url: 'https://api.sandbox.midtrans.com/v2/charge',

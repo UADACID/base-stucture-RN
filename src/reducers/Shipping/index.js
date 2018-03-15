@@ -59,6 +59,9 @@ export const shipping = (state= initialState, action) => {
         serviceSelected
       }
       break;
+    case "RESET_SHIPPING":
+      return initialState
+      break;
     default:
       return state
   }

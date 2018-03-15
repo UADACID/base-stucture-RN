@@ -40,14 +40,21 @@ export default class PaymentDetails extends Component {
 
   componentDidMount(){
     const { bankName, payment_type } = this.props.navigation.state.params
-    this.props.onCreateTransaction({ bankName, payment_type })
+    const { paymentsReducer } = this.props
+    const { data } = paymentsReducer
+    this.props.onCreateTransaction({ bankName, payment_type, transactionItem:data })
+  }
+
+  onConfirmationPress = () => {
+    const payment_id = this.props.paymentsReducer.response.order_id
+    this.props.onConfirmationPress(payment_id)
   }
 
   render() {
     const { bankName, payment_type } = this.props.navigation.state.params
-    const { data } = this.props.paymentsReducer
+    const { response } = this.props.paymentsReducer
 
-    if (!this.props.paymentsReducer.success && this.props.paymentsReducer.data == null ) {
+    if (!this.props.paymentsReducer.success && this.props.paymentsReducer.response == null ) {
         return (
           <View style={styles.loadingContainer}>
             <ActivityIndicator />
@@ -55,11 +62,11 @@ export default class PaymentDetails extends Component {
         )
     }
 
-    const { gross_amount, order_id, status_message, transaction_id, transaction_status, transaction_time} = data
+    const { gross_amount, order_id, status_message, transaction_id, transaction_status, transaction_time} = response
     return (
       <View style={styles.container}>
         <Content>
-          {bankName == 'mandiri' ? <AddOnMandiriBill data={data}/> : <AddOnBcaTransfer data={data}/> }
+          {bankName == 'mandiri' ? <AddOnMandiriBill data={response}/> : <AddOnBcaTransfer data={response}/> }
           <Card style={styles.cardContainer}>
             <CustomItem title='Order Id' desc={order_id}/>
             <CustomItem title='Message' desc={status_message}/>
@@ -69,7 +76,7 @@ export default class PaymentDetails extends Component {
           </Card>
         </Content>
         <Footer style={{height:50}}>
-          <Button style={styles.confirmationButton} onPress={this.props.onConfirmationPress}>
+          <Button style={styles.confirmationButton} onPress={this.onConfirmationPress}>
             <Text style={{color:'#000'}}>CONFIRMATION</Text>
           </Button>
         </Footer>

@@ -8,6 +8,7 @@ import {
   StyleSheet,
   FlatList,
   Image,
+  Alert,
   Dimensions,
   TouchableOpacity,
   ImageBackground
@@ -36,7 +37,7 @@ class CustomListPromote extends Component {
 
   renderItem = ({item}) => {
     return (
-      <TouchableOpacity activeOpacity={0.9} onPress={()=>console.log('Designs')}>
+      <TouchableOpacity activeOpacity={0.9} onPress={()=>Alert.alert('Menunggu versi rilis')}>
         <Card>
           <CardItem style={styles.cardContainer}>
             <FastImage

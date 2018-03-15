@@ -49,7 +49,7 @@ class TabImage extends Component {
       }
       else {
         let source = { uri: response.uri };
-
+        this.props.addNewImage({url:source.uri, type:'camera'})
         // You can also display the image using data:
         // let source = { uri: 'data:image/jpeg;base64,' + response.data };
 
@@ -81,8 +81,13 @@ class TabImage extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   const onChangeSubTabBottom = (subTabName) => dispatch({type:'CHANGE_SUB_TAB_BOTTOM_SELECTED', payload:subTabName})
+  const addNewImage = (payload) => {
+    dispatch({type:'ADD_NEW_IMAGE', payload})
+    dispatch({type:'CLEAR_ALL_ACTIVE_TEXT'})
+  }
   return {
-    onChangeSubTabBottom
+    onChangeSubTabBottom,
+    addNewImage
   }
 }
 

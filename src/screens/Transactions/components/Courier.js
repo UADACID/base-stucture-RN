@@ -38,6 +38,9 @@ class Courier extends Component {
   onSelectedCourer = (name) => {
     // console.log('-----city name -----');
     // console.log(this.props.city_id);
+    if (!this.props.isConnected) {
+      return Alert.alert("Mohon cek koneksi jaringan anda")
+    }
     const config = {
       method:'post',
       url:`https://api.rajaongkir.com/starter/cost`,
@@ -89,7 +92,8 @@ const mapStateToProps = state => {
   const defaultAddress = filterDefaultAddress[0].city_id
   return {
     shipping : state.shipping,
-    city_id : defaultAddress
+    city_id : defaultAddress,
+    isConnected : state.isConnected
   }
 }
 

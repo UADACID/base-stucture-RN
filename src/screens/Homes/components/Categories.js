@@ -7,6 +7,7 @@ import {
   StyleSheet,
   FlatList,
   Image,
+  Alert,
   TouchableOpacity,
   Dimensions
 } from 'react-native';
@@ -18,9 +19,13 @@ const { width, height } = Dimensions.get('window')
 
 class Categories extends Component {
 
-  handlePressCategory = (id) => {
+  handlePressCategory = (item) => {
+    if (item.name !== 'Kaos') {
+      return Alert.alert('','Saat ini hanya tersedia untuk kategori Kaos')
+    }
+
     this.props.hideCategoryOverlay()
-    this.props.toScreen({routeName:'Models', passProps:{categoryId:id}})
+    this.props.toScreen({routeName:'Models', params:{categoryId:item.id}})
   }
 
   _keyExtractor = (item, index) => item.id;
@@ -29,7 +34,7 @@ class Categories extends Component {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={this.handlePressCategory}>
+        onPress={()=>this.handlePressCategory(item)}>
         <Image
           style={{width:width/4, height:width/4}}
           source={{uri:item.image_url}}/>
@@ -59,8 +64,8 @@ class Categories extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     hideCategoryOverlay: () => {dispatch({type:'HIDE_CATEGORY_OVERLAY'})},
-    toScreen: ({routeName, passProps})=>{
-      dispatch(NavigationActions.navigate({ routeName: routeName }))
+    toScreen: ({routeName, params})=>{
+      dispatch(NavigationActions.navigate({ routeName: routeName, params }))
     }
   }
 }

@@ -4,6 +4,7 @@ import { NavigationActions } from 'react-navigation'
 import transactionAdapter from '../../actions/PaymentDetails/transactionAdapter'
 //service
 import createPaymentTransaction from '../../services/PaymentDetails/createPaymentTransaction'
+import checkPaymentStatus from '../../services/PaymentDetails/checkPaymentStatus'
 import PaymentDetails from '../../screens/PaymentDetails'
 
 const mapDispatchToProps = dispatch => ({
@@ -12,23 +13,25 @@ const mapDispatchToProps = dispatch => ({
     dispatch(NavigationActions.back());
   },
   resetTransactionPayment:() => dispatch({type:'RESET_TRANSACTION_PAYMENT'}),
-  onCreateTransaction : ({ bankName, payment_type }) => {
-    const payload = transactionAdapter({ bankName, payment_type })
+  onCreateTransaction : ({ bankName, payment_type, transactionItem }) => {
+    const payload = transactionAdapter({ bankName, payment_type, transactionItem })
+    console.log(payload);
     createPaymentTransaction(payload, dispatch)
   },
-  onConfirmationPress : () => {
-    dispatch({type:'RESET_TRANSACTION_PAYMENT'})
-    const resetAction = NavigationActions.reset({
-      index: 1,
-      actions: [
-        NavigationActions.navigate({ routeName: 'TabHome' }),
-        NavigationActions.navigate({
-          routeName: 'TabHistory' ,
-          action: NavigationActions.navigate({ routeName: 'Completed' }),
-        }),
-      ],
-    });
-    dispatch(resetAction);
+  onConfirmationPress : (payment_id) => {
+    checkPaymentStatus(dispatch, payment_id)
+    // dispatch({type:'RESET_TRANSACTION_PAYMENT'})
+    // const resetAction = NavigationActions.reset({
+    //   index: 1,
+    //   actions: [
+    //     NavigationActions.navigate({ routeName: 'TabHome' }),
+    //     NavigationActions.navigate({
+    //       routeName: 'TabHistory' ,
+    //       action: NavigationActions.navigate({ routeName: 'Completed' }),
+    //     }),
+    //   ],
+    // });
+    // dispatch(resetAction);
   }
 })
 

@@ -26,6 +26,11 @@ export default class Models extends Component {
       </TouchableNativeFeedback>)
   })
 
+  componentDidMount(){
+    const { categoryId } = this.props.navigation.state.params
+    console.log(categoryId);
+  }
+
   render() {
     return (
       <View style={styles.container}>
