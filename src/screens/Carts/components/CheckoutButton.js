@@ -1,38 +1,81 @@
 /* @flow weak */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
   Dimensions,
   StyleSheet,
+  ToastAndroid,
 } from 'react-native';
 import { connect } from 'react-redux'
 import { Button } from 'native-base'
 
+
 const { width, height } = Dimensions.get('window')
 
-const CheckoutButton = (props) => (
-    <Button
-      onPress={()=> props.dispatch({type:'Navigation/NAVIGATE', routeName:'Transactions'})}
-      style={styles.button}>
-      <ButtonLeft sumaryOfAllOrder={props.sumaryOfAllOrder}/>
-      <ButtonRight />
-    </Button>
-);
+class CheckoutButton extends Component {
+
+  onPresCheckout = () => {
+    this.props.onPresCheckout(this.props.orderReducer)
+    // this.props.dispatch({type:'Navigation/NAVIGATE', routeName:'Transactions'})
+  }
+
+  render(){
+
+    if (this.props.orderReducer.length == 0) {
+      return (
+        <Button
+          style={styles.button}>
+        </Button>
+      )
+    }
+    return (
+      <Button
+        onPress={this.onPresCheckout}
+        style={styles.button}>
+        <ButtonLeft sumaryOfAllOrder={this.props.sumaryOfAllOrder}/>
+        <ButtonRight />
+      </Button>
+    )
+  }
+}
+
 
 const mapStateToProps = state => {
+  const { orderReducer } = state
   let sumary = 0
-  const sumaryOfAllOrder = state.orderReducer.map(obj => {
+  const sumaryOfAllOrder = orderReducer.map(obj => {
     sumary += obj.totalPrice
   })
 
   return {
-    sumaryOfAllOrder: sumary
+    sumaryOfAllOrder: sumary,
+    orderReducer
   }
 }
 
-export default connect(mapStateToProps)(CheckoutButton);
+const mapDispatchToProps = dispatch => ({
+  onPresCheckout:(orderReducer)=> {
+    console.log(orderReducer);
+    if (orderReducer.length == 0 ) {
+      return ToastAndroid.show('Keranjang belanja masih kosong', ToastAndroid.SHORT);
+    }
+
+    for (var i = 0; i < orderReducer.length; i++) {
+
+      if (orderReducer[i].totalPrice == 0) {
+        return ToastAndroid.show('Lengkapi size pesanan anda', ToastAndroid.SHORT);
+      }
+
+    }
+
+
+    dispatch({type:'Navigation/NAVIGATE', routeName:'Transactions'})
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutButton);
 
 const ButtonLeft = (props) => {
   return (

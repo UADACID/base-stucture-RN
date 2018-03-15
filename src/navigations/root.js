@@ -21,7 +21,9 @@ export const NavigationMiddleware = createReactNavigationReduxMiddleware(
 const addListener = createReduxBoundAddListener("root");
 
 class App extends React.Component {
+
   render() {
+    const routeName = this.props.nav.routes[0].routeName
     return (
       <View style={{flex:1}}>
         <AppNavigator navigation={addNavigationHelpers({
@@ -30,7 +32,7 @@ class App extends React.Component {
           addListener,
         })} />
         {this.props.nav.index == 0 && this.props.nav.routes.length == 1 ?
-        <CustomCircleButton /> : false}
+        (routeName == 'Splash' ? false : <CustomCircleButton />) : false}
         <CategoryOverlay />
       </View>
     );

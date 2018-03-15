@@ -27,32 +27,18 @@ import ListAddress from '../containers/ListAddress'
 
 const { width, height } = Dimensions.get('window')
 
-const Test = (props) => (
-  <View>
-    <Text onPress={()=> {
-      // props.navigation.navigate('TabHome')
-      const resetAction = NavigationActions.reset({
-        index: 1,
-        actions: [
-          NavigationActions.navigate({ routeName: 'TabHome' }),
-          NavigationActions.navigate({
-            routeName: 'TabHistory' ,
-            action: NavigationActions.navigate({ routeName: 'TabH2' }),
-          }),
-        ],
-      });
-      props.navigation.dispatch(resetAction);
-    }}>Menunggu Rilis</Text>
-  </View>
-)
+// const Test = (props) => (
+//   <View>
+//     <Notifications />
+// )
 
 
 const TabHistory = TabNavigator({
   Pending : {
-    screen : Test
+    screen : Notifications
   },
   Completed : {
-    screen : Test
+    screen : Notifications
   }
 },{
   tabBarPosition : 'top',

@@ -35,7 +35,7 @@ class Forms extends Component {
               style={{color:'#fff'}}/>
           </Item>
         </Form>
-        <Button style={styles.buttonLogin}>
+        <Button style={styles.buttonLogin} onPress={()=> alert('Belum Tersedia')}>
           <Text style={{color:'#fff'}}>
             Sign In
           </Text>

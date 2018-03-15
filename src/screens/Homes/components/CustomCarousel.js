@@ -16,7 +16,7 @@ const CustomCarousel = (props) => (
   <View>
     <Carousel
       ref={(c) => { this._carousel = c; }}
-      data={[{title:'aji'},{title:'ikka'},{title:'alfin'},{title:'dea'}]}
+      data={dummy}
       renderItem={_renderItem}
       sliderWidth={width}
       itemWidth={width}
@@ -34,7 +34,7 @@ const _renderItem = ({item, index}) => {
             <Image
               resizeMode='cover'
               style={{width, height:200}}
-              source={{uri:'http://www.tshirt-factory.com/images/promo/34/Online-Tshirt-Designer-Slider-Site-v214987382955954ee770e93f.jpg'}}
+              source={{uri:item.uri}}
             />
         </View>
     );
@@ -47,3 +47,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+const dummy = [
+  {
+    id:1,
+    uri:'http://www.tshirt-factory.com/images/promo/34/Online-Tshirt-Designer-Slider-Site-v214987382955954ee770e93f.jpg'
+  },
+  {
+    id:2,
+    uri:'https://i.pinimg.com/originals/2f/28/24/2f282498e08bf57bc309f436bb9b1ee0.jpg'
+  },
+  {
+    id:3,
+    uri:'https://ae01.alicdn.com/kf/HTB1FdEBQXXXXXaTXpXXq6xXFXXXS/New-kayu-berbingkai-siap-untuk-menggantung-nordic-simple-abstrak-wall-art-hd-canvas-print-untuk-ruang.jpg_640x640q90.jpg'
+  },
+]
