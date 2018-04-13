@@ -44,6 +44,9 @@ const orderReducer = ( state = initialState, action ) => {
         value.index = index
         return state.concat([value])
       break;
+    case "RESET_ORDER":
+        return initialState
+      break;
     case "REMOVE_ORDER":
         let orderIndex = action.payload
         const newState = state.filter(obj => obj.index !== orderIndex)

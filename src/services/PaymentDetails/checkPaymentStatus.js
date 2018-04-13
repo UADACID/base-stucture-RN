@@ -32,6 +32,7 @@ export default checkPaymentStatus = (dispatch, payment_id) => {
 
         dispatch({type:'RESET_TRANSACTION_PAYMENT'})
         dispatch({type:'RESET_SHIPPING'})
+        dispatch({type:'RESET_ORDER'})
         const resetAction = NavigationActions.reset({
           index: 1,
           actions: [
@@ -48,6 +49,7 @@ export default checkPaymentStatus = (dispatch, payment_id) => {
       }
       dispatch({type:'RESET_TRANSACTION_PAYMENT'})
       dispatch({type:'RESET_SHIPPING'})
+      dispatch({type:'RESET_ORDER'})
       // dispatch(NavigationActions.back());
       // this.props.onBackPress()
       //navigate back
@@ -69,6 +71,7 @@ export default checkPaymentStatus = (dispatch, payment_id) => {
       dispatch(resetAction);
       dispatch({type:'RESET_TRANSACTION_PAYMENT'})
       dispatch({type:'RESET_SHIPPING'})
+      dispatch({type:'RESET_ORDER'})
       // dispatch(NavigationActions.back());
       // this.props.onBackPress
       console.log(err);

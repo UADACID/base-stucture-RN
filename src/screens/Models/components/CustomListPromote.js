@@ -37,7 +37,7 @@ class CustomListPromote extends Component {
 
   renderItem = ({item}) => {
     return (
-      <TouchableOpacity activeOpacity={0.9} onPress={()=>Alert.alert('Menunggu versi rilis')}>
+      <TouchableOpacity activeOpacity={0.9} onPress={()=>alert('under development')}>
         <Card>
           <CardItem style={styles.cardContainer}>
             <FastImage

@@ -25,7 +25,7 @@ export default class Brand extends Component {
   renderItem = (item) => {
     // console.log(item);
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>alert('under development')}>
           <Card>
             <CardItem>
               <Body>

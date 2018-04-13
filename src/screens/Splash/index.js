@@ -29,7 +29,7 @@ export default class Splash extends Component {
         ],
       });
       this.props.navigation.dispatch(resetAction);
-    }, 10000);
+    }, 11000);
   }
 
   _renderItem = ({item, index}) => {

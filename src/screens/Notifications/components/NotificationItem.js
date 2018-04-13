@@ -15,7 +15,7 @@ export default class NotificationItem extends Component {
     const iconColor = this.props.isRead ? '#0073b2' : 'gray'
     return (
       <View style={styles.container}>
-          <ListItem>
+          <ListItem onPress={()=>alert('under development')}>
             <Thumbnail square size={80} source={{ uri: this.props.uri }} />
             <Body>
               <Text>{this.props.title}</Text>
